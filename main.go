@@ -17,19 +17,6 @@ import (
 
 var errNotFound = errors.New("no type definition found at the target line")
 
-type Name string
-
-type Kek struct {
-	a, b int
-}
-
-func NewKek(a int, b int) Kek {
-	return Kek{
-		a: a,
-		b: b,
-	}
-}
-
 func generateConstructor(source []byte, targetLine int) (string, error) {
 	fset := token.NewFileSet()
 	node, err := parser.ParseFile(fset, "source.go", source, parser.ParseComments)
